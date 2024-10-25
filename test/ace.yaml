@@ -1,0 +1,20 @@
+Input:
+  topology: "/home/qzy03/hdd1/Entropy/x_ace_1.0/2pt/prod.01.tpr"
+  trajectory: "/home/qzy03/hdd1/Entropy/x_ace_1.0/2pt/prod.01.trr"
+  Temperature: 298.15
+
+Output:
+  vacf: "./test/ace_vacf.csv"
+  dos: "./test/ace_dos.csv"
+  report: "./test/ace_thermo.csv"
+  
+
+Groups:
+  group1:
+    name: "acetone"
+    selection: "resnum 1:500"
+    density: 5
+    constraints: 6
+    rotation_symmetry: 2
+    isLiner: false
+    isCalculated: true

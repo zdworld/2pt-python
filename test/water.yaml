@@ -1,0 +1,27 @@
+Input:
+  topology: "/home/qzy03/hdd1/Entropy/x_ace_0.0/2pt/prod.01.tpr"
+  trajectory: "/home/qzy03/hdd1/Entropy/x_ace_0.0/2pt/prod.01.trr"
+  Temperature: 298.15
+
+Output:
+  vacf: "./test/w_vacf.csv"
+  dos: "./test/w_dos.csv"
+  report: "./test/w_thermo.csv"
+
+Groups:
+  group1:
+    name: "water1"
+    selection: "same residue as name OW and prop z >= 20"
+    density: 33
+    constraints: 3
+    rotation_symmetry: 2
+    isLiner: false
+    isCalculated: true
+  group2:
+    name: "water2"
+    selection: "same residue as name OW and prop z < 20"
+    density: 33
+    constraints: 3
+    rotation_symmetry: 2
+    isLiner: false
+    isCalculated: false
