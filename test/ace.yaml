@@ -1,6 +1,6 @@
 Input:
-  topology: "/home/qzy03/hdd1/Entropy/x_ace_1.0/2pt/prod.01.tpr"
-  trajectory: "/home/qzy03/hdd1/Entropy/x_ace_1.0/2pt/prod.01.trr"
+  topology: "./gmxTraj/acetone.tpr"
+  trajectory: "./gmxTraj/acetone.trr"
   Temperature: 298.15
 
 Output:

@@ -83,8 +83,9 @@ class AtomGroups:
             group['Temperature'] = [settings['Input']['Temperature']]*5
             # 预分配存放vacf矩阵的位置,(n_frames,5),5为tra,rot,vib,omega.total
             group['vacf'] = np.zeros((len(u.trajectory), 5), dtype="float32")
+            # group['vacf'] = np.zeros((len(u.trajectory)//2, 5), dtype="float32")
             # 多一列，为角速度的态密度,5列依次为tra,rot,vib,omega,total
-            group['DOS'] = np.zeros((len(u.trajectory)//2, 5), dtype="float32")
+            group['DOS'] = np.zeros((group['vacf'].shape[0]//2, 5), dtype="float32")
             group['DOS 2PT'] = {"translation": np.zeros((group['DOS'].shape[0], 2), dtype="float32"),
                                 "rotation": np.zeros((group['DOS'].shape[0], 2), dtype="float32"),
                                 "vibration": np.zeros((group['DOS'].shape[0], 1), dtype="float32"),

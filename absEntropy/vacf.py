@@ -48,6 +48,29 @@ def vacf_mass(vel: np.ndarray, masses: np.ndarray):
 
     return vacf_sum3d
 
+# # 计算速度的质量加权自相关函数
+# def vacf_mass(vel: np.ndarray, masses: np.ndarray):
+#     '''
+#     计算速度的自相关函数, 每个维度分量计算完成后求和, 再对质量加权求和
+#     输入为(n_frames, n_atoms, 3)的速度矩阵
+#     返回已经三方向求和的质量加权自相关函数(n_frames, n_atoms)
+#     '''
+#     n_frames, n_atoms, _ = vel.shape
+#     # 速度矩阵展平用于计算自相关函数矩阵
+#     vel = vel.reshape(n_frames, n_atoms * 3)
+
+#     vacf_sum3d = np.zeros((n_frames//2, n_atoms), dtype="float32")
+#     vel_fft = np.zeros(vel.shape, dtype="complex64")
+#     vel_ifft = np.zeros(vel.shape, dtype="complex64")
+
+#     vel_fft = fft.fft(vel, axis=0, norm="backward", workers=16)
+#     vel_ifft = np.real(vel_fft * vel_fft.conj())
+#     vel_ifft = fft.ifft(vel_ifft, axis=0, norm="forward", workers=16, overwrite_x=True) / n_frames
+#     vacf_sum3d = np.sum(np.real(vel_ifft.reshape(-1, n_atoms, 3)), axis=2)[:n_frames//2, :] * masses[np.newaxis, :] / n_frames
+
+#     return vacf_sum3d
+
+
 
 def vacf_omega(omega: np.ndarray):
     '''
@@ -67,6 +90,26 @@ def vacf_omega(omega: np.ndarray):
     vacf_sum3d = np.sum(vacf, axis=2)
 
     return vacf_sum3d
+
+# def vacf_omega(omega: np.ndarray):
+#     '''
+#     角速度的态密度计算
+#     输入:omega,(n_frames,n_mols,3)转动惯量均方根加权的角速度
+#         inertia_principle,(n_frames,n_mols,3)三个惯性主轴的转动惯量
+#     返回:vacf_omega,(n_frames, nmols)为每个分子三方向角速度对sqrt(inertia_principle)加权后的自相关函数
+#     '''
+#     n_frames, n_mols, _ = omega.shape
+#     # 速度矩阵展平用于计算自相关函数矩阵
+#     omega = omega.reshape(n_frames, n_mols * 3)
+#     vacf_sum3d = np.zeros((n_frames//2, n_mols), dtype="float32")
+#     omega_fft = np.zeros(omega.shape, dtype="complex64")
+#     omega_ifft = np.zeros(omega.shape, dtype="complex64")
+
+#     omega_fft = fft.fft(omega, axis=0, norm="backward", workers=16)
+#     omega_ifft = np.real(omega_fft * omega_fft.conj())
+#     omega_ifft = fft.ifft(omega_ifft, axis=0, norm="forward", workers=16, overwrite_x=True) / n_frames
+#     vacf_sum3d = np.sum(np.real(omega_ifft.reshape(-1, n_mols, 3)), axis=2)[:n_frames//2, :] / n_frames
+#     return vacf_sum3d
 
 
 # 速度自相关函数的傅里叶变换
