@@ -47,11 +47,11 @@ class AtomGroups:
                 if common.size != 0:
                     common_element.append(common)
             if len(common_element) != 0:
-                repeated_atoms = reduce(np.concatenate, common_element)
+                repeated_atoms = sum((list(arr) for arr in common_element), [])
                 warnings.warn(
-                    f"Atom id {repeated_atoms} is not unique. This can lead to a wrong result.")
+                    f"Atom id {set(repeated_atoms)} is not unique. This can lead to a wrong result.")
                 exit()
-                return
+                
         # 检查总和是否为所有原子
         union_element = reduce(np.union1d, group_indices)
         is_equal = np.array_equal(
@@ -490,7 +490,7 @@ class DOSdist:
 
         for group in self.grps_info.Groups.values():
             print(f"Entropy of group: {group['name']}")
-            for types in {'translation', 'rotation', 'vibration'}:
+            for types in ['translation', 'rotation', 'vibration']:
                 group['Entropy'][types] = [8.3138462 *
                                            s for s in group['Entropy'][types]]
                 print(f"    Entropy of {types}: {
@@ -523,7 +523,7 @@ class DOSdist:
 
         if self.outfiles['report'] != None:
             report_df = pd.DataFrame(columns=['property'], data=[
-                                     'Moleculers', 'Atoms', 'DOF', 'Temperature/(K)', 'Volume/(A3)', 'Sq/(J/mol_K)', 'Fluidicity', 'Diffusion/(1e-5 cm2/s2)'])
+                                     'Moleculers', 'Atoms', 'DOF', 'Temperature/(K)', 'Volume/(A3)', 'Sq/(J/mol_K)', 'Fluidicity', 'Diffusion/(1e-5 cm2/s)'])
             for group in self.grps_info.Groups.values():
                 data_tra = np.array([group['n_mols'], group['n_atoms'], np.trapz(y=group['DOS'][:, 0], x=self.fft_freq), group['Temperature'][0],
                                     group['volume'], group['Entropy']['translation'][0]+group['Entropy']['translation'][1], group['fluidicity'][0], group['diffusion'][0]*1e5])
