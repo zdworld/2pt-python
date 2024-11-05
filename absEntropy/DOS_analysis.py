@@ -37,7 +37,7 @@ class AtomGroups:
                 group_indices.append(atom_grp.indices)
             except:
                 warnings.warn(
-                    f"Selection {group['selection']} is invalid, please check the sel statement.")
+                    f"Selection {group['selection']} is invalid, please check the selection statement.")
                 exit()
         # 检查是否有重复的原子
         if len(group_indices) > 1:
@@ -49,7 +49,7 @@ class AtomGroups:
             if len(common_element) != 0:
                 repeated_atoms = sum((list(arr) for arr in common_element), [])
                 warnings.warn(
-                    f"Atom id {set(repeated_atoms)} is not unique. This can lead to a wrong result.")
+                    f"Total {len(set(repeated_atoms))} atoms are not unique. This can lead to a wrong result. Please check the selection statements.")
                 exit()
                 
         # 检查总和是否为所有原子

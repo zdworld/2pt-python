@@ -10,7 +10,7 @@
 ```shell
 git clone https://github.com/zdworld/2pt-python.git
 cd 2pt-python
-pip install -r requirements.txt
+conda install --yes --file requirements.txt
 ```
 
 ## 使用方法
@@ -62,7 +62,7 @@ Groups:
 - `Output`: 输出文件, vacf为质量加权的速度自相关函数, dos为态密度，report为计算结果, 若为空则不输出。
 - `Groups`: 分组信息, 每个组(group1, group2...)为一个字典, 每个组必须由相同的分子构成, 且不同组之间的交集为空, 所有组的并集为全部原子。包含下列内容:
   - `name`: 组名, 会输出至报告中。
-  - `selection`: 选择语句, 使用[MDAnalysis的选区语法](https://docs.mdanalysis.org/stable/documentation_pages/selections.html), 由于速度的旋转分量以分子为单位计算, 此处得到的选区总会包含这些被选中的原子所在的残基。对单个分子内具有不同残基的大分子若没有正确选中整个分子可导致错误的结果。
+  - `selection`: 选择语句, 使用[MDAnalysis的选区语法](https://docs.mdanalysis.org/stable/documentation_pages/selections.html), 由于速度的旋转分量以分子为单位计算, 此处得到的选区应当包含这些被选中的原子所在的残基。对单个分子内具有不同残基的大分子若没有正确选中整个分子可导致错误的结果。
   - `density`: 组内分子的数密度, 用于估计摩尔体积, 单位为 nm^-1, 计算时会将全部数密度乘以系数`K_deltaV`, 如果`K_deltaV`偏离1过多则表明数密度的估计是严重偏差的, 这对纯物质没有影响但对混合物有很大的计算偏差。
   - `constraints`: 此组内每个分子被约束的自由度, 刚性水为3, 模拟中约束了`h-bonds`也应当记录在此处。
   - `rotation_symmetry`: 旋转对称数, 根据分子的点群确定, 参考[Molecular symmetry, rotational entropy, and elevated melting points](https://doi.org/10.1021/ie990588m)。

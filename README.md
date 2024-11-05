@@ -10,7 +10,7 @@
 ```shell
 git clone https://github.com/zdworld/2pt-python.git
 cd 2pt-python
-pip install -r requirements.txt
+conda install --yes --file requirements.txt
 ```
 
 ## Usage
@@ -62,7 +62,7 @@ The configuration file has three main sections:
 - `Output`: Specifies output files. `vacf` is the mass-weighted velocity autocorrelation function, `dos` is the density of states, and `report` is the calculation results. Leave empty if not needed.
 - `Groups`: Specifies grouping information. Each group (group1, group2...) is a dictionary. Each group must consist of identical molecules, with no overlap between groups, and the union of all groups must encompass all atoms. Each group includes:
   - `name`: Group name, included in the report.
-  - `selection`: Selection expression using [MDAnalysis selection syntax](https://docs.mdanalysis.org/stable/documentation_pages/selections.html). Since the rotational component of velocity is calculated per molecule, the selection always includes the residues of selected atoms. Incorrect selection in large molecules with multiple residues could lead to errors.
+  - `selection`: Selection expression using [MDAnalysis selection syntax](https://docs.mdanalysis.org/stable/documentation_pages/selections.html). Since the rotational component of velocity is calculated per molecule, the selection should always include the residues of selected atoms. Incorrect selection in large molecules with multiple residues could lead to errors.
   - `density`: Molecular number density of the group (nm^-1), used to estimate molar volume. The total number density is multiplied by a coefficient `K_deltaV`; if `K_deltaV` deviates significantly from 1, the density estimation is likely inaccurate, affecting mixtures more than pure substances.
   - `constraints`: The degrees of freedom constrained within each molecule in this group. For rigid water, this is 3. Constraints on `h-bonds` in simulations should be recorded here.
   - `rotation_symmetry`: Rotational symmetry number, determined by molecular point group; see [Molecular symmetry, rotational entropy, and elevated melting points](https://doi.org/10.1021/ie990588m).

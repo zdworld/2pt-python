@@ -1,7 +1,7 @@
 MDAnalysis==2.7.0
-numpy==2.1.2
-pandas==2.2.3
+numpy<=2.1.2
+pandas<=2.2.3
 pyFFTW==0.14.0
 PyYAML==6.0.2
 rich==13.9.3
-scipy==1.14.1
+scipy<=1.14.1
