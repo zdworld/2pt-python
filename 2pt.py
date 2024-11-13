@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright (c) 2022 zyqiao
+# Copyright (c) 2024 zyqiao
 # All rights reserved.
 
 from absEntropy import *
