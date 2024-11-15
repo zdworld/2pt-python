@@ -391,8 +391,7 @@ class DOSdist:
     def vibration_analysis(self):
         # dos 2pt中储存了全部的功函数，乘以加权函数即可
         for group in self.grps_info.Groups.values():
-            print(f"Analyzing DOS weighting function for group {
-                  group['name']}...")
+            print(f"Analyzing DOS weighting function for group {group['name']}...")
             if group['isMonatomic']:
                 # 单原子流体，仅平动分量
                 group['Entropy']['translation'] = [0., 0.]
@@ -501,8 +500,7 @@ class DOSdist:
             vacf_df = pd.DataFrame(columns=['time/(ps)'], data=self.grps_info.dt * np.linspace(
                 0, len(self.universe.trajectory), len(self.universe.trajectory)))
             for group in self.grps_info.Groups.values():
-                df_temp = pd.DataFrame(columns=[f'Tra[{group["name"]}]', f'Rot[{group["name"]}]', f'Vib[{
-                                       group["name"]}]', f'Ang[{group["name"]}]', f'Tot[{group["name"]}]'], data=group['vacf'])
+                df_temp = pd.DataFrame(columns=[f'Tra[{group["name"]}]', f'Rot[{group["name"]}]', f'Vib[{group["name"]}]', f'Ang[{group["name"]}]', f'Tot[{group["name"]}]'], data=group['vacf'])
                 vacf_df = pd.concat([vacf_df, df_temp], axis=1)
             vacf_df.to_csv(
                 self.outfiles['vacf'], index=False, float_format='%15.4f', sep='\t', mode='w')
@@ -511,8 +509,7 @@ class DOSdist:
         if self.outfiles['dos'] != None:
             dos_df = pd.DataFrame(columns=['freq/(cm-1)'], data=self.fft_freq)
             for group in self.grps_info.Groups.values():
-                df_temp = pd.DataFrame(columns=[f'Tra(GAS)[{group["name"]}]', f'Tra(SOLI)[{group["name"]}]', f'Rot(GAS)[{group["name"]}]', f'Rot(SOLI)[{group["name"]}]', f'Vib[{group["name"]}]', f'Ang(GAS)[{
-                                       group["name"]}]', f'Ang(SOLI)[{group["name"]}]'], data=np.hstack([group['DOS 2PT']['translation'], group['DOS 2PT']['rotation'], group['DOS 2PT']['vibration'], group['DOS 2PT']['omega']]))
+                df_temp = pd.DataFrame(columns=[f'Tra(GAS)[{group["name"]}]', f'Tra(SOLI)[{group["name"]}]', f'Rot(GAS)[{group["name"]}]', f'Rot(SOLI)[{group["name"]}]', f'Vib[{group["name"]}]', f'Ang(GAS)[{group["name"]}]', f'Ang(SOLI)[{group["name"]}]'], data=np.hstack([group['DOS 2PT']['translation'], group['DOS 2PT']['rotation'], group['DOS 2PT']['vibration'], group['DOS 2PT']['omega']]))
                 dos_df = pd.concat([dos_df, df_temp], axis=1)
             dos_df.to_csv(self.outfiles['dos'], index=False,
                           float_format='%15.4f', sep='\t', mode='w')
@@ -533,8 +530,7 @@ class DOSdist:
                     [group['n_mols'], group['n_atoms'], group['Temperature'][4], group['volume'], 0, 0])
 
                 datas = np.vstack([data_tra, data_rot, data_vib, data_tot]).T
-                df_temp = pd.DataFrame(columns=[f'Tra[{group['name']}]', f'Rot[{
-                                       group["name"]}]', f'Vib[{group["name"]}]', f'Tot[{group["name"]}]'], data=datas)
+                df_temp = pd.DataFrame(columns=[f'Tra[{group['name']}]', f'Rot[{group["name"]}]', f'Vib[{group["name"]}]', f'Tot[{group["name"]}]'], data=datas)
                 report_df = pd.concat([report_df, df_temp], axis=1)
 
             report_df.to_csv(
