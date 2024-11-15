@@ -530,7 +530,7 @@ class DOSdist:
                     [group['n_mols'], group['n_atoms'], group['Temperature'][4], group['volume'], 0, 0])
 
                 datas = np.vstack([data_tra, data_rot, data_vib, data_tot]).T
-                df_temp = pd.DataFrame(columns=[f'Tra[{group['name']}]', f'Rot[{group["name"]}]', f'Vib[{group["name"]}]', f'Tot[{group["name"]}]'], data=datas)
+                df_temp = pd.DataFrame(columns=[f'Tra[{group["name"]}]', f'Rot[{group["name"]}]', f'Vib[{group["name"]}]', f'Tot[{group["name"]}]'], data=datas)
                 report_df = pd.concat([report_df, df_temp], axis=1)
 
             report_df.to_csv(
