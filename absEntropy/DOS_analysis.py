@@ -129,8 +129,7 @@ class AtomGroups:
         # 缩放系数,反映混合物对理想混合物的偏差,偏差越大估计误差越大
         k_deltaV = np.sum(np.array([grp['n_mols']/grp['density']
                           for grp in self.Groups.values()]))*1000/self._volume
-        print(f'K_deltaV = {
-              k_deltaV:.4f} \nIf there is a large deviation to 1, please check the density(nm^-3) of each group.')
+        print(f'K_deltaV = {k_deltaV:.4f} \nIf there is a large deviation to 1, please check the density(nm^-3) of each group.')
         for group in self.Groups.values():
             group['volume'] = 1000*group['n_mols']/(group['density']*k_deltaV)
 
@@ -142,8 +141,7 @@ class AtomGroups:
         for key in self.Groups.keys():
             group = self.Groups[key]
             if group['isCalculated'] == False:
-                print(f"Group {group['name']
-                               } is not calculated, removing it...")
+                print(f"Group {group['name']} is not calculated, removing it...")
                 to_rm.append(key)
         for key in to_rm:
             self.Groups.pop(key)
@@ -493,8 +491,7 @@ class DOSdist:
             for types in ['translation', 'rotation', 'vibration']:
                 group['Entropy'][types] = [8.3138462 *
                                            s for s in group['Entropy'][types]]
-                print(f"    Entropy of {types}: {
-                      group['Entropy'][types][0] + group['Entropy'][types][1]:6.4f} J/mol/K")
+                print(f"    Entropy of {types}: {group['Entropy'][types][0] + group['Entropy'][types][1]:6.4f} J/mol/K")
 
     def save_data(self):
         '''
