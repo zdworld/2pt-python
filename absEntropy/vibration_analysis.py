@@ -126,5 +126,5 @@ def dos_gaslike(S0: float, freq: np.ndarray, f: float, n_mols: int, DOS: np.ndar
     DOS单位使用cm, 返回一个gas-like的dos,从总dos中减去gas分量得到固态分量
     '''
     DOS_gas = S0 / (1 + ((np.pi * S0 * freq) / (6 * f * n_mols))**2)
-    # DOS_gas = np.minimum(DOS_gas, DOS)
+    DOS_gas = np.minimum(DOS_gas, DOS)
     return DOS_gas
