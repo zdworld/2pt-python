@@ -335,10 +335,10 @@ class DOSdist:
                 else:
                     group['DOS 2PT']['translation'][:, 0] = dos_gaslike(
                         S0=group['DOS'][0, 0], freq=self.fft_freq, f=f_tra, n_mols=group['n_mols'], DOS=group['DOS'][:, 0])
-                    # group['DOS 2PT']['translation'][:, 1] = group['DOS'][:,
-                    #                                                      0] - group['DOS 2PT']['translation'][:, 0]
-                    group['DOS 2PT']['translation'][:, 1] = np.clip((group['DOS'][:,
-                                                                         0] - group['DOS 2PT']['translation'][:, 0]), 0, None)                
+                    group['DOS 2PT']['translation'][:, 1] = group['DOS'][:,
+                                                                         0] - group['DOS 2PT']['translation'][:, 0]
+                    # group['DOS 2PT']['translation'][:, 1] = np.clip((group['DOS'][:,
+                    #                                                      0] - group['DOS 2PT']['translation'][:, 0]), 0, None)                
                     group['DOS 2PT']['translation'][0, 1] = 0.0
 
             if group['Temperature'][1] > 0:
@@ -377,10 +377,10 @@ class DOSdist:
                 else:
                     group['DOS 2PT']['omega'][:, 0] = dos_gaslike(
                         S0=group['DOS'][0, 3], freq=self.fft_freq, f=f_omega, n_mols=group['n_mols'], DOS=group['DOS'][:, 3])
-                    # group['DOS 2PT']['omega'][:, 1] = group['DOS'][:,
-                    #                                                3] - group['DOS 2PT']['omega'][:, 0]
-                    group['DOS 2PT']['omega'][:, 1] = np.clip((group['DOS'][:,
-                                                                   3] - group['DOS 2PT']['omega'][:, 0]), 0, None)
+                    group['DOS 2PT']['omega'][:, 1] = group['DOS'][:,
+                                                                   3] - group['DOS 2PT']['omega'][:, 0]
+                    # group['DOS 2PT']['omega'][:, 1] = np.clip((group['DOS'][:,
+                    #                                                3] - group['DOS 2PT']['omega'][:, 0]), 0, None)
                     group['DOS 2PT']['omega'][0, 1] = 0.0
 
             group['fluidicity'] = [f_tra, f_rot, f_omega]
