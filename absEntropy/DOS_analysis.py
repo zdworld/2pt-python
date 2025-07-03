@@ -283,7 +283,7 @@ class DOSdist:
             # 解除对速度的占用
             group['velocities'] = None
             gc.collect()
-            Temperatures = np.array(group['Temperature'])
+            Temperatures = np.array(group['Temperature']).copy()
             # 加一小值防止除以0
             for i in range(4):
                 if Temperatures[i] <= 0:

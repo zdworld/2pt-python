@@ -17,10 +17,9 @@ conda install --yes --file requirements.txt
 2PT 方法可以从约 20 ps 的凝聚相轨迹或者 200 ps 的气相轨迹中获取较为准确的绝对熵, 轨迹应当通过NVT系综产生, 若通过NPT系综产生则按最后一帧的box尺寸计算。
 保存的频率应当足够高, 以记录全部的振动模式, 通常来说 4 fs 的采样间隔就足够(最大频率约4100cm^-1, 包含了绝大多数振动模式)。为了结果的可靠性至少采样 5000 frames, 并检查自相关函数是否充分衰减。
 ### 轨迹预处理
-分子动力学轨迹应当预先处理周期性边界并移除质心的平动与转动:
+分子动力学轨迹应当预先处理周期性边界:
 ```shell
 echo 0 | gmx trjconv -f prod.trr -s prod.tpr -o prod.pbc.trr -pbc mol
-echo -e "0\n0\n" | gmx trjconv -f prod.pbc.trr -s prod.tpr -o prod.fit.trr -fit rot+trans
 ```
 
 ### 配置文件

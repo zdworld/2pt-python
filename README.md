@@ -17,11 +17,10 @@ conda install --yes --file requirements.txt
 The 2PT method can produce accurate absolute entropy estimates from approximately 20 ps of condensed phase trajectories or 200 ps of gas phase trajectories. The trajectory should be generated in an NVT ensemble; if generated in an NPT ensemble, the box dimensions from the last frame are used. The saving frequency should be high enough to capture all vibrational modes, typically with a 4 fs sampling interval (sufficient for the maximum frequency of about 4100 cm^-1, covering most vibrational modes). To ensure reliability, sample at least 5000 frames and check for sufficient autocorrelation function decay.
 
 ### Trajectory Preprocessing
-Molecular dynamics trajectories should first be processed for periodic boundaries and have translational and rotational motion removed:
+Molecular dynamics trajectories should first be processed for periodic boundaries:
 
 ```shell
 echo 0 | gmx trjconv -f prod.trr -s prod.tpr -o prod.pbc.trr -pbc mol
-echo -e "0\n0\n" | gmx trjconv -f prod.pbc.trr -s prod.tpr -o prod.fit.trr -fit rot+trans
 ```
 
 ### Configuration File

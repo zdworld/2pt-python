@@ -60,36 +60,6 @@ def angular_M(coordinates, velocities, masses):
     return angular_momentum
 
 
-# def calcu_v_rot(coordinates, velocities, masses):
-#     '''
-#     计算转动速度, 先计算角速度,再与相对坐标求外积得到旋转线速度, 总速度扣除平动速度和旋转的线速度得到振动内速度
-#     输入:coorinates:(n_frames, n_mols, mol_atoms, 3),即输入一组的全部坐标,按分子拆分。
-#         velocites:(n_frames, n_mols, mol_atoms, 3),即输入一组的全部速度,按分子拆分。
-#         masses:一个分子的质量,形状应当为(mol_atoms,)
-#     返回一个角速度矩阵:(n_frames, n_mols, 3), 一个线速度矩阵(n_frames, n_mols, mol_atoms, 3)
-#     且这里只考虑转动惯量张量满秩的情况, 不满秩意味着线形分子, 其转动惯量张量是不可逆的, 求伪逆的速度
-#     为正常求逆的六分之一, 根据是否为线形分子区分
-#     '''
-#     # 质心
-#     center_of_mass = np.sum(
-#         masses[None, None, :, None] * coordinates, axis=2) / np.sum(masses)
-#     # 相对于质心的内部笛卡尔坐标
-#     relative_coords = coordinates - center_of_mass[:, :, None, :]
-
-#     # 计算每一帧的每个分子的惯量张量
-#     inertia_tensors = rotational_I(coordinates, masses)
-#     # 计算每一帧的每个分子的角动量
-#     angular_momenta = angular_M(coordinates, velocities, masses)
-#     # 使用 np.linalg.solve 代替矩阵求逆，解决每一帧的方程 inertia_tensors * omega = angular_momenta
-#     omega = np.zeros(
-#         (coordinates.shape[0], coordinates.shape[1], 3), dtype="float32")
-#     v_rot = np.zeros(velocities.shape, dtype="float32")
-
-#     omega = np.linalg.solve(
-#         inertia_tensors, angular_momenta[:, :, :, None]).squeeze(-1)
-#     v_rot = np.cross(omega[:, :, None, :], relative_coords)
-
-#     return v_rot, omega, inertia_tensors
 
 def calcu_v_rot(coordinates, velocities, masses, isLiner: bool = False):
     '''
