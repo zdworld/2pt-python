@@ -77,7 +77,7 @@ In the example configuration, all atoms are divided into two groups:
 python3 2PT.py -c config.yaml
 ```
 
-The runtime depends on system size. Output is displayed in the terminal, and the program consumes a significant amount of memory. As a reference, the acetone box in the test folder (5000 atoms, 100001 frames) consumes 4420 MiB for velocity decomposition, with peak memory usage 3-4 times higher.
+The runtime depends on system size. Output is displayed in the terminal, and the program consumes a significant amount of memory. As a reference, the water box in the test folder consumes about 7000 MiB for velocity decomposition.
 
 For mixtures, the total system entropy should subtract the mixing entropy:
 
