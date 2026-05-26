@@ -86,3 +86,20 @@ S_{\text{total}} = \sum_{i=1}^{n}S_i - R \sum_{i=1}^{n} n_i \ln x_i
 $$
 
 where $x_i$ is the mole fraction of group $i$, $n_i$ is the mole count of group $i$, and $S_i$ is the entropy of group $i$.
+
+## Citation
+2PT-PYTHON provides two-phase thermodynamics (2PT) entropy estimation from molecular dynamics trajectories for pure substances and mixtures. If you use 2PT-PYTHON in published work, please cite:
+
+Qiao, Z.; Wu, H.; Zhou, J. Co-solvency phenomenon and thermodynamic mechanism of cyanoethyl cellulose in acetone-water binary solvent. Carbohydrate Polymers 2026, 381, 125221. https://doi.org/10.1016/j.carbpol.2026.125221
+
+```bibtex
+@article{Qiao2026Cosolvency,
+  author  = {Qiao, Zhenyu and Wu, Hao and Zhou, Jinping},
+  title   = {Co-solvency phenomenon and thermodynamic mechanism of cyanoethyl cellulose in acetone-water binary solvent},
+  journal = {Carbohydrate Polymers},
+  year    = {2026},
+  volume  = {381},
+  pages   = {125221},
+  doi     = {10.1016/j.carbpol.2026.125221}
+}
+```

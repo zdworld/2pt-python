@@ -87,3 +87,20 @@ $$
 其中 $x_i$ 为第 $i$ 组的摩尔分数, $n_i$ 为第 $i$ 组的摩尔数, $S_i$ 为第 $i$ 组的熵值。
 
 
+
+## 引用
+2PT-PYTHON 用于基于分子动力学轨迹进行两相热力学（2PT）熵估计，涵盖纯物质与混合物体系。如果你在已发表工作中使用了 2PT-PYTHON，请引用：
+
+Qiao, Z.; Wu, H.; Zhou, J. Co-solvency phenomenon and thermodynamic mechanism of cyanoethyl cellulose in acetone-water binary solvent. Carbohydrate Polymers 2026, 381, 125221. https://doi.org/10.1016/j.carbpol.2026.125221
+
+```bibtex
+@article{Qiao2026Cosolvency,
+  author  = {Qiao, Zhenyu and Wu, Hao and Zhou, Jinping},
+  title   = {Co-solvency phenomenon and thermodynamic mechanism of cyanoethyl cellulose in acetone-water binary solvent},
+  journal = {Carbohydrate Polymers},
+  year    = {2026},
+  volume  = {381},
+  pages   = {125221},
+  doi     = {10.1016/j.carbpol.2026.125221}
+}
+```
