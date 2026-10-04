@@ -1,0 +1,77 @@
+{
+  "trajectory": "md_production_nve.traj (external source; not committed)",
+  "file_size_bytes": 10214255792,
+  "n_frames": 20001,
+  "n_atoms": 5110,
+  "formula": "C1200H3000F62N31Na31O724S62",
+  "composition_counts": {
+    "C": 1200,
+    "F": 62,
+    "H": 3000,
+    "N": 31,
+    "Na": 31,
+    "O": 724,
+    "S": 62
+  },
+  "pbc": [
+    true,
+    true,
+    true
+  ],
+  "cell_A": [
+    [
+      37.76361429743743,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      37.76361429743743,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      37.76361429743743
+    ]
+  ],
+  "volume_A3": 53854.334042534174,
+  "ase_md_description": {
+    "type": "molecular-dynamics",
+    "md-type": "VelocityVerlet",
+    "timestep": 0.09822694788464063,
+    "interval": 1
+  },
+  "timestep_fs": 1.0,
+  "trajectory_span_ps": 20.0,
+  "velocity_source": "ASE momenta array -> Atoms.get_velocities()",
+  "has_velocities": true,
+  "ion_mapping": {
+    "Na_indices": [
+      4800,
+      4830
+    ],
+    "n_Na": 31,
+    "FSI_group_atoms": 9,
+    "n_FSI": 31,
+    "FSI_atom_composition": "O4S2NF2",
+    "neutral_solvent": "DME"
+  },
+  "charge_model": "formal charges +1e (Na+) and -1e (FSI-), mass-weighted ion COM velocities; DME excluded",
+  "temperature_K_mean": 298.1748828321165,
+  "temperature_K_sd_over_frames": 2.5893113610012666,
+  "sigma_cumulative_full_S_m": {
+    "0.05": 15.47947889004341,
+    "0.1": 8.661121972795014,
+    "0.2": 11.949864804964657,
+    "0.3": 6.045320955801086,
+    "0.5": 5.29430044793594,
+    "1.0": 4.588121013633021,
+    "2.0": 4.014799414025489,
+    "5.0": 1.8945361376101573,
+    "10.0": 0.15028976429270882
+  },
+  "primary_block_length_ps": 2.0,
+  "primary_block_count": 10,
+  "caveat": "Short single trajectory; long-time Green-Kubo plateau must be judged from block and prefix diagnostics before formal experimental comparison."
+}
